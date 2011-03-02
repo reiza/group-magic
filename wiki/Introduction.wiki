@@ -1,4 +1,5 @@
 #summary Group Magic Enrollment Plugin
+#labels Featured
 
 = Introduction =
 
