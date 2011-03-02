@@ -9,14 +9,14 @@ Group Magic in an enrollment plugin for [http://moodle.com Moodle 2.0] that auto
 
 The following feature settings can be configured via Moodle's plugin management interface:
 
-Auto-group maximum group size (Integer)
+== Auto-group maximum group size (Integer) ==
 The plugin will not fill groups which exceed the maximum group size. If no group exists with a size below the maximum size, a new group will be created to add new students. The plugin will *not* remove users from any group that exceeds the maximum group size, so manual overloading of groups is possible.
 
-Auto-fill priority (Sequential or Balanced)
+== Auto-fill priority (Sequential or Balanced) ==
 Determines the method for filling all existing groups which are below the maximum group size. The Sequential fill setting will add students to largest group. The Balanced fill setting will add students to the smallest group.
 
-Create new groups (Yes or No)
+== Create new groups (Yes or No) ==
 If enabled, a new group will be created automatically by the plugin if all existing groups are full. When disabled, the plugin will not create new groups, but this means that new students will not be placed into a group.
 
-Use database transaction (Optional)
+== Use database transaction (Optional) ==
 If enabled, the plugin will attempt to use Moodle's database transaction when adding a student to a group.
