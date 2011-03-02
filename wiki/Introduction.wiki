@@ -2,8 +2,8 @@
 #labels Featured
 
 = Introduction =
-
-Group Magic in an enrollment plugin for [http://moodle.com Moodle 2.0] that automatically places students into groups after enrolling them in a course. If a group does not exist, a new group is automatically created and the student is added to the new group.
+ 
+Group-Magic is an external enrollment plugin for [http://moodle.com Moodle 2.0] that was created to remove the need to manually group students who have enrolled in courses. The plugin automatically places students into groups after enrolling them in a course. If a group does not exist, a new group is automatically created and the student is added to the new group.
 
 
 = Details =
