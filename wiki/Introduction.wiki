@@ -8,7 +8,7 @@ Group-Magic is an external enrollment plugin for [http://moodle.com Moodle 2.0] 
 
 = Details =
 
-The following [Installation] feature settings can be configured via Moodle's plugin management interface:
+The following feature settings can be configured via  Moodle's [Installation#Details plugin management interface]:
 
 == Auto-group maximum group size (Integer) ==
 The plugin will not fill groups which exceed the maximum group size. If no group exists with a size below the maximum size, a new group will be created to add new students. The plugin will *not* remove users from any group that exceeds the maximum group size, so manual overloading of groups is possible.
