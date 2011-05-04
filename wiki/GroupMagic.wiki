@@ -1,0 +1,117 @@
+{{{
+
+<?php
+
+/**
+ * GroupMagic - automatic user grouping for Moodle 2.0 enrollment plugins.
+ *
+ * Allows auto-grouping of students on enrollment and can automatically create groups as needed. 
+ *
+ * @author OCD Team
+ * @copyright 2011 OCD Team
+ **/
+class GroupMagic {
+		
+	/* Private methods for wrapping Moodle functions */
+	
+	private function _addUserToGroup( $userId, $groupId );
+	
+	private function _getAllCourseGroups( $courseId );
+	
+	private function _getGroupMembers( $groupId );
+
+	private function _getUserCourseGroupings( $userId, $courseId );
+	
+	private function _createNewGroup( $groupObj );
+	
+	private function _getAllRoles();
+	
+	
+	/**
+	 * Creates a new Group Magic instance
+	 * 
+	 * @param array $options
+	 *
+	 * @return void
+	 **/
+	public function __construct( $options = false );
+	
+	/**
+	 * Set properties from options array. Very simple for now - used to establish
+	 * standard option keys - can be extended with more logic, validation in future.
+	 *
+	 * @param array $options
+	 *
+	 * @return void
+	 */
+	public function setOptions( $options );
+	
+	/**
+	 * Adds a user to one of a course's groups using best group possible.
+	 *
+	 * @param int $userId
+	 * @param int $courseId
+	 * @param array $userRoles
+	 *
+	 * @return void
+	 **/
+	public function addUserToCourseGroups( $userId, $courseId, $userRoles );
+	
+	
+	/**
+	 * Check to see whether any of a user's roles for a given course is the auto-group role.
+	 *
+	 * @param array $roles
+	 *	
+	 * @return boolean
+	 **/
+	public function hasAutoGroupRole( $roles );
+	
+	/**
+	 * Adds a user to a group. May attempt to use a db transaction.
+	 * Moodle will check db and engine for transaction support
+	 * If supported appropriate transactions db adapter method call made
+	 * Else db actions happen without transaction
+	 *
+	 * @param int $userId
+	 * @param int $groupId
+	 *	
+	 * @return void
+	 **/
+	public function addUserToGroup( $userId, $groupId );
+	
+	/**
+	 * Creates a new course group. Returns the group id.
+	 *
+	 * @param int $courseId
+	 * @param string $groupName
+	 *	
+	 * @return int
+	 **/
+	public function createNewCourseGroup( $courseId, $groupName );
+	
+	/**
+	 * Determines best group in a course to add user. May create a new
+	 * group if necessary. Returns the group id, or 0 if none found.
+	 *
+	 * @param int $userId
+	 * @param int $courseId
+	 *	
+	 * @return int
+	 **/
+	public function getBestGroupId( $userId, $courseId );
+	
+	/**
+	 * Check to see whether a user is already in any group for a given course. 
+	 * Returns number of groups found with user as a member.
+	 *
+	 * @param int $userId
+	 * @param int $courseId
+	 *	
+	 * @return int
+	 **/
+	public function isUserInCourseGroup( $courseId, $userId );
+	
+}
+
+}}}
