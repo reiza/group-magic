@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Group Magic
+ * GroupMagic - automatic user grouping for Moodle 2.0 enrollment plugins.
  *
  * Automatically adds students to groups
  * Automatically creates groups if needed (Optional)
@@ -10,9 +10,8 @@
  * Sequential or balanced auto-filling of groups
  * Supports Moodle's database transaction (Optional)
  *
- * @package    enrol
- * @subpackage database
- * @copyright  2011 Sacha Beharry, Anil Ramnanan, Reiza Haniff,  {@link http://code.google.com/p/group-magic/}
+ * @author OCD Team - Sacha Beharry, Anil Ramnanan, Reiza Haniff
+ * @copyright  2011 OCD Team,  {@link http://code.google.com/p/group-magic/}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
