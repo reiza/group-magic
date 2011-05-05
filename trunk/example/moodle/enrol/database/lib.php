@@ -246,21 +246,21 @@ class enrol_database_plugin extends enrol_plugin {
 		// THE CODE BELOW IS FOR DEMONSTRATION PURPOSES ONLY AT THIS TIME
 		// Using the GroupMagic class we can automatically add users to groups when they are enrolled
 		
-		$useAutogrouping = TRUE;//$this->get_config('useautogrouping');
-		if( $useAutogrouping ) {
+		$useGroupMagic = TRUE;
+		
+		if( $useGroupMagic ) {
 			
-			$maxSize = 25;
-			$fillType = 'seq';
-			$createGroups = 1;
-			$useDbTrans = true;
-			$autoGroupRole = 5;
+			$gm = new GroupMagic( array(
+				'maxGroupSize' 		=> 25,
+				'groupFillType' 	=> 'seq',
+				'createGroups' 		=> true,
+				'useDbTransaction' 	=> true,
+				'autoGroupRole' 	=> 5 // student
+			) );
 			
-			
-			$gm = new GroupMagic( $maxSize, $fillType, $createGroups, $useDbTrans, $autoGroupRole );
 			foreach( $enrols as $courseId => $roles ) {
 				$gm->addUserToCourseGroups( $user->id, $courseId, $roles );
 			}
-			//$this->updateUserCourseGroups( $enrols, $user );
 		}
 		
 		// THE CODE ABOVE IS FOR DEMONSTRATION PURPOSES ONLY AT THIS TIME
