@@ -53,10 +53,10 @@ public function sync_user_enrolments( $user ) {
     */
 
     $gm = new GroupMagic( array(
-        'maxGroupSize'   => $this->get_config('maxgroupsize'),	// eg. 25
-        'groupFillType' 	   => $this->get_config('autofilltype'), // eg. 'seq' or 'para'
-        'createGroups' 	  => $this->get_config('createnewgroups'), // eg. 1
-        'autoGroupRole'  => $this->get_config('defaultrole') // eg. 5 (student)
+        'maxGroupSize' => $this->get_config('maxgroupsize'),	// eg. 25
+        'groupFillType' => $this->get_config('autofilltype'), // eg. 'seq' or 'para'
+        'createGroups' => $this->get_config('createnewgroups'), // eg. 1
+        'autoGroupRole' => $this->get_config('defaultrole') // eg. 5 (student)
     ) );
 
     foreach( $enrols as $courseId => $roles ) {
