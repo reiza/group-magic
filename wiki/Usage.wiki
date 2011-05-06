@@ -1,4 +1,4 @@
-#Using GroupMagic class in an enrollment plugin.
+#summary Using GroupMagic class in an enrollment plugin.
 
 = Basic Usage =
 
