@@ -34,11 +34,7 @@ $gm->addUserToCourseGroups( 25, 124, array( 5, 6 ) );
 
 = Example use in enrollment plugin =
 
-For a given user enrolled in a course with the role of student and guest.
-|| Property || Value || Description ||
-|| userId || 25 || example user id - hypothetical ||
-|| courseId || 124 || example course id - hypothetical ||
-|| roles || array( 5, 6 ) || list of roles for user enrolled in course - hypothetical ||
+Use in sync_user_enrolments() function after updating enrollment for a user. 
 
 {{{
 public function sync_user_enrolments( $user ) {
@@ -57,10 +53,10 @@ public function sync_user_enrolments( $user ) {
     */
 
     $gm = new GroupMagic( array(
-        'maxGroupSize'   => $this->get_config('maxgroupsize'),		// eg. 25
-        'groupFillType' 	   => $this->get_config('autofilltype'),		// eg. 'seq' or 'para'
-        'createGroups' 	  => $this->get_config('createnewgroups'),	// eg. 1
-        'autoGroupRole'  => $this->get_config('defaultrole')		// eg. 5 (student)
+        'maxGroupSize'   => $this->get_config('maxgroupsize'),	// eg. 25
+        'groupFillType' 	   => $this->get_config('autofilltype'), // eg. 'seq' or 'para'
+        'createGroups' 	  => $this->get_config('createnewgroups'), // eg. 1
+        'autoGroupRole'  => $this->get_config('defaultrole') // eg. 5 (student)
     ) );
 
     foreach( $enrols as $courseId => $roles ) {
