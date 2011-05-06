@@ -1,0 +1,70 @@
+#Using GroupMagic class in an enrollment plugin.
+
+= Example =
+
+= Constructor and options =
+
+Automatic grouping of users which are students for a given course.
+Fill groups sequentially up to a maximum size of 25 users.
+Create new groups as needed.
+
+|| Property || Value || Description ||
+|| maxGroupSize || 25 || maximum number of users in a group ||
+|| autoGroupRole || 5 || 5 = student role in Moodle 2.0 ||
+
+{{{
+$gm = new GroupMagic( array(
+    'maxGroupSize'   => 25,
+    'autoGroupRole'  => 5 // student
+) );		
+}}}
+
+= Auto-group a user enrolled in a course =
+
+For a given user enrolled in a course with the role of student and guest.
+|| Property || Value || Description ||
+|| userId || 25 || example user id - hypothetical ||
+|| courseId || 124 || example course id - hypothetical ||
+|| roles || array( 5, 6 ) || list of roles for user enrolled in course - hypothetical ||
+
+{{{
+//$gm->addUserToCourseGroups( $userId, $courseId, $roles );
+$gm->addUserToCourseGroups( 25, 124, array( 5, 6 ) );
+}}}
+
+= Example use in enrollment plugin =
+
+For a given user enrolled in a course with the role of student and guest.
+|| Property || Value || Description ||
+|| userId || 25 || example user id - hypothetical ||
+|| courseId || 124 || example course id - hypothetical ||
+|| roles || array( 5, 6 ) || list of roles for user enrolled in course - hypothetical ||
+
+{{{
+public function sync_user_enrolments( $user ) {
+   $enrols = array();
+
+   /* ... plugin enrollment code ... */
+
+   /* 
+        Store enrollment data for user in array as below:
+
+        $enrols = array( 
+            [course id 1] => array( role id 1, role id 2, ... ),
+            [course id 2] => array( role id 1, ... ),
+            ...
+        );
+    */
+
+    $gm = new GroupMagic( array(
+        'maxGroupSize'   => $this->get_config('maxgroupsize'),		// eg. 25
+        'groupFillType' 	   => $this->get_config('autofilltype'),		// eg. 'seq' or 'para'
+        'createGroups' 	  => $this->get_config('createnewgroups'),	// eg. 1
+        'autoGroupRole'  => $this->get_config('defaultrole')		// eg. 5 (student)
+    ) );
+
+    foreach( $enrols as $courseId => $roles ) {
+        $gm->addUserToCourseGroups( $user->id, $courseId, $roles );
+    }
+}
+}}}
