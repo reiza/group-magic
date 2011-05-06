@@ -2,14 +2,15 @@
 
 = Basic Usage =
 
-Constructor - create instance using options array.
+== Constructor and Options == 
+
+Constructor: create instance of the GroupMagic class using an options array.
 
 {{{
 $gm = new GroupMagic( $options );
-$gm->addUserToCourseGroups( $userId, $courseId, $roles );
 }}}
 
-==Options ==
+Option list.
 
 || Property || Description || Type || 
 || maxGroupSize || maximum number of users to place in a group || int ||
@@ -18,16 +19,28 @@ $gm->addUserToCourseGroups( $userId, $courseId, $roles );
 || useDbTransaction || Use a database transaction when adding user to a group || boolean ||
 || autoGroupRole || User role in course to auto-group || int ||
 
-
 {{{
 $gm = new GroupMagic( array(
 	'maxGroupSize' => 25,
-	'groupFillType' 	=> 'seq',
+	'groupFillType' => 'seq',
 	'createGroups' => true,
 	'useDbTransaction' => true,
 	'autoGroupRole' => 5 // 5 = student role id
 ) );
 }}}
+
+== Auto-group method ==
+
+{{{
+$gm->addUserToCourseGroups( $userId, $courseId, $roles );
+}}}
+
+Parameters
+
+|| Parameter || Description || Type || 
+|| userId || User id || int ||
+|| courseId  || Course id || int ||
+|| roles || List of role ids associated with given user and course || array() ||
 
 = Examples =
 
