@@ -79,19 +79,6 @@ Use in sync_user_enrolments() function after updating enrollment for a user.
 
 {{{
 public function sync_user_enrolments( $user ) {
-   $enrols = array();
-
-   /* ... plugin enrollment code ... */
-
-   /* 
-        Store enrollment data for user in array as below:
-
-        $enrols = array( 
-            [course id 1] => array( role id 1, role id 2, ... ),
-            [course id 2] => array( role id 1, ... ),
-            ...
-        );
-    */
 
     // GroupMagic options can be added to the plugin configuration
     // and retrieved via the get_config() function
@@ -102,6 +89,20 @@ public function sync_user_enrolments( $user ) {
         'createGroups' => $this->get_config('createnewgroups'), 
         'autoGroupRole' => $this->get_config('defaultrole') 
     ) );
+
+
+   $enrols = array();
+
+   /* 
+        ... plugin enrollment code ...
+        ... store enrollment data for user in array as below:
+
+        $enrols = array( 
+            [course id 1] => array( role id 1, role id 2, ... ),
+            [course id 2] => array( role id 1, ... ),
+            ...
+        );
+    */
 
     foreach( $enrols as $courseId => $roles ) {
         $gm->addUserToCourseGroups( $user->id, $courseId, $roles );
