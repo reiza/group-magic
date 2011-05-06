@@ -21,11 +21,11 @@ Option list.
 
 {{{
 $gm = new GroupMagic( array(
-	'maxGroupSize' => 25,
-	'groupFillType' => 'seq',
-	'createGroups' => true,
-	'useDbTransaction' => true,
-	'autoGroupRole' => 5 // 5 = student role id
+    'maxGroupSize' => 25,
+    'groupFillType' => 'seq',
+    'createGroups' => true,
+    'useDbTransaction' => true,
+    'autoGroupRole' => 5 // 5 = student role id
 ) );
 }}}
 
@@ -93,11 +93,14 @@ public function sync_user_enrolments( $user ) {
         );
     */
 
+    // GroupMagic options can be added to the plugin configuration
+    // and retrieved via the get_config() function
+
     $gm = new GroupMagic( array(
-        'maxGroupSize' => $this->get_config('maxgroupsize'), // int [ eg. 25 ]
-        'groupFillType' => $this->get_config('autofilltype'), // 'seq' || 'para' 
-        'createGroups' => $this->get_config('createnewgroups'), // true || false
-        'autoGroupRole' => $this->get_config('defaultrole') // int [ eg. 5 (student) ]
+        'maxGroupSize' => $this->get_config('maxgroupsize'), 
+        'groupFillType' => $this->get_config('autofilltype'), 
+        'createGroups' => $this->get_config('createnewgroups'), 
+        'autoGroupRole' => $this->get_config('defaultrole') 
     ) );
 
     foreach( $enrols as $courseId => $roles ) {
