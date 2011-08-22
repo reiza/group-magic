@@ -217,7 +217,7 @@ class GroupMagic {
 			$o->group = $group;
 			$o->users = $this->_getGroupMembers( $group->id );
 			$o->size = count( $o->users );
-			if( $ignoreEnrolmentKey || !$group->enrolmentkey ) {
+			if( $this->ignoreEnrolmentKey || !$group->enrolmentkey ) {
 				if( $o->size < $maxSize && $o->size > $bestSeqGroupSize ) {
 					$bestSeqGroupId = $group->id;
 					$bestSeqGroupSize = $o->size;
