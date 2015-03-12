@@ -1,7 +1,7 @@
 # Group-Magic
 ## Enrollment Plugin for Moodle 2.0
 
-Group-Magic is an external enrollment plugin for Moodle 2.0 which auto-groups students on enrollment. The plugin can automatically create groups as needed. It removes the need for manual grouping of students.
+Group-Magic is an external enrollment plugin for [Moodle 2.0](http://moodle.com) which auto-groups students on enrollment. The plugin can automatically create groups as needed. It removes the need for manual grouping of students.
 
 Features:
 - Automatically adds students to groups
